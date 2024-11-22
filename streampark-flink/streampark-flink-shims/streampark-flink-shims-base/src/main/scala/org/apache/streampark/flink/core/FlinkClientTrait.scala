@@ -29,6 +29,7 @@ abstract class FlinkClientTrait[T](clusterClient: ClusterClient[T]) {
       jobID: JobID,
       savepointDir: String,
       nativeFormat: Boolean = false): CompletableFuture[String] = {
+    // tips 跳转到flink源码
     clusterClient.triggerSavepoint(jobID, savepointDir, SavepointFormatType.DEFAULT)
   }
 

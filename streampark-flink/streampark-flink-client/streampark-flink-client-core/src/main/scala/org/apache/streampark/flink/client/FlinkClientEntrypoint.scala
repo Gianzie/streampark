@@ -55,6 +55,7 @@ object FlinkClientEntrypoint {
 
   def triggerSavepoint(savepointRequest: TriggerSavepointRequest): SavepointResponse = {
     clients.get(savepointRequest.deployMode) match {
+      // tips enter
       case Some(client) => client.triggerSavepoint(savepointRequest)
       case _ =>
         throw new UnsupportedOperationException(

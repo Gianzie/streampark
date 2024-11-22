@@ -72,6 +72,7 @@ public class SavepointController {
     @RequiresPermissions("savepoint:trigger")
     public RestResponse trigger(
                                 Long appId, @Nullable String savepointPath, @Nullable Boolean nativeFormat) {
+        // tips enter
         savepointService.trigger(appId, savepointPath, nativeFormat);
         return RestResponse.success(true);
     }

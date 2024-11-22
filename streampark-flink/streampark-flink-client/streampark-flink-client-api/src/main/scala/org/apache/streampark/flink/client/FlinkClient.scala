@@ -86,6 +86,7 @@ object FlinkClient extends Logger {
         val requestClass = classLoader.loadClass(requestBody._1)
         val method = submitClass.getDeclaredMethod(requestBody._2, requestClass)
         method.setAccessible(true)
+        // tips method为org.apache.streampark.flink.client.FlinkClientEntrypoint，调用triggerSavepoint
         val obj = method.invoke(null, FlinkShimsProxy.getObject(classLoader, request))
         if (obj == null) {
           null.asInstanceOf[T]

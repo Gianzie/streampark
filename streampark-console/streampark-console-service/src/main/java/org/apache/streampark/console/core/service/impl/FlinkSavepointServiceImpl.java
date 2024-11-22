@@ -179,6 +179,7 @@ public class FlinkSavepointServiceImpl extends ServiceImpl<FlinkSavepointMapper,
             flinkEnv);
 
         CompletableFuture<SavepointResponse> savepointFuture = CompletableFuture
+            // tips enter
             .supplyAsync(() -> FlinkClient.triggerSavepoint(request), executorService);
 
         handleSavepointResponseFuture(application, applicationLog, savepointFuture);

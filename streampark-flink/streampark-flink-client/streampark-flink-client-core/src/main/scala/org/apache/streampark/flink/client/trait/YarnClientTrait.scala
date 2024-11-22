@@ -75,6 +75,7 @@ trait YarnClientTrait extends FlinkClientTrait {
       savepointRequest,
       flinkConf,
       (jid, client) => {
+        // tips enter
         SavepointResponse(super.triggerSavepoint(savepointRequest, jid, client))
       })
   }

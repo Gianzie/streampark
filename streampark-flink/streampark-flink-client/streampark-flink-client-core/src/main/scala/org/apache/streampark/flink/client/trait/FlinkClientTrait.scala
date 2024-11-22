@@ -191,6 +191,7 @@ trait FlinkClientTrait extends Logger {
 
   @throws[Exception]
   def triggerSavepoint(savepointRequest: TriggerSavepointRequest): SavepointResponse = {
+    // tips 打印
     logInfo(
       s"""
          |----------------------------------------- flink job trigger savepoint ---------------------
@@ -205,6 +206,7 @@ trait FlinkClientTrait extends Logger {
          |-------------------------------------------------------------------------------------------
          |""".stripMargin)
     val flinkConf = new Configuration()
+    // tips 查看作业模式对应实现
     doTriggerSavepoint(savepointRequest, flinkConf)
   }
 
@@ -599,6 +601,7 @@ trait FlinkClientTrait extends Logger {
     val savepointPath = tryGetSavepointPathIfNeed(savepointRequest)
     val clientWrapper = new FlinkClusterClient(client)
     clientWrapper
+      // tips enter
       .triggerSavepoint(jobID, savepointPath, savepointRequest.nativeFormat)
       .get()
   }
